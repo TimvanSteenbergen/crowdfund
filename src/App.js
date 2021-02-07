@@ -6,10 +6,6 @@ import Nav from 'react-bootstrap/Nav';
 // import logo from './logo.svg';
 import './App.css';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-// import { listCampaigns } from './graphql/queries';
-// import { createCampaign as createCampaignMutation, deleteCampaign as deleteCampaignMutation } from './graphql/mutations';
-// import { listNotes } from './graphql/queries';
-// import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
 
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -36,7 +32,7 @@ class App extends React.Component {
         text: 'Checkout how to crowdfund with maximal revenue'
       },
       campaigns: {
-        title: 'Campaings',
+        title: 'Campaigns',
         subTitle: 'Fundraisers for your idea'
       },
       donations: {

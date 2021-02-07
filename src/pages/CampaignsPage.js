@@ -3,6 +3,7 @@ import { API, Storage } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { listCampaigns } from '../graphql/queries';
 import { createCampaign as createCampaignMutation, deleteCampaign as deleteCampaignMutation } from '../graphql/mutations';
+import { boolean } from 'yargs';
 
 const initialFormState = { name: '', description: '' }
 
@@ -18,9 +19,9 @@ function App() {
         const apiData = await API.graphql({ query: listCampaigns });
         const CampaignsFromAPI = apiData.data.listCampaigns.items;
         await Promise.all(CampaignsFromAPI.map(async Campaign => {
-            if (Campaign.image) {
-                const image = await Storage.get(Campaign.image);
-                Campaign.image = image;
+            if (Campaign.CampaignImage) {
+                const image = await Storage.get(Campaign.CampaignImage);
+                Campaign.CampaignImage = image;
             }
             return Campaign;
         }))
@@ -28,11 +29,16 @@ function App() {
     }
 
     async function createCampaign() {
+        console.log('1sdf');
         if (!formData.name || !formData.description) return;
+        console.log('2sdf');
         await API.graphql({ query: createCampaignMutation, variables: { input: formData } });
-        if (formData.image) {
-            const image = await Storage.get(formData.image);
-            formData.image = image;
+        console.log('3sdf');
+        if (formData.CampaignImage) {
+            console.log('4sdf');
+            const image = await Storage.get(formData.CampaignImage);
+            formData.CampaignImage = image;
+            console.log('5sdf');
         }
         setCampaigns([...campaigns, formData]);
         setFormData(initialFormState);
@@ -47,14 +53,14 @@ function App() {
     async function onChange(e) {
         if (!e.target.files[0]) return
         const file = e.target.files[0];
-        setFormData({ ...formData, image: file.name });
+        setFormData({ ...formData, CampaignImage: file.name });
         await Storage.put(file.name, file);
         fetchCampaigns();
     }
 
     return (
         <div className="App">
-            <h1>My Campaigns App</h1>
+            <h1>Add a campaign</h1>
             <input
                 onChange={e => setFormData({ ...formData, 'name': e.target.value })}
                 placeholder="Campaign name"
@@ -78,7 +84,7 @@ function App() {
                             <p>{Campaign.description}</p>
                             <button onClick={() => deleteCampaign(Campaign)}>Delete Campaign</button>
                             {
-                                Campaign.image && <img src={Campaign.image} style={{ width: 400 }} alt='' />
+                                Campaign.CampaignImage && <img src={Campaign.CampaignImage} style={{ width: 400 }} alt='' />
                             }
                         </div>
                     ))
