@@ -9,6 +9,7 @@ import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
+import CampaignEditPage from './pages/CampaignEditPage';
 import CampaignsPage from './pages/CampaignsPage';
 import DonationsPage from './pages/DonationsPage';
 import ContactPage from './pages/ContactPage';
@@ -68,6 +69,7 @@ class App extends React.Component {
 
           <Route path="/" exact render={() => <HomePage title={this.state.home.title} subTitle={this.state.home.subTitle} text={this.state.home.text} />} />
           <Route path="/campaigns" render={() => <CampaignsPage title={this.state.campaigns.title} />} />
+          <Route path="/campaignedit" render={() => <CampaignEditPage title={this.state.campaigns.title} />} />
           <Route path="/donations" render={() => <DonationsPage title={this.state.donations.title} />} />
           <Route path="/contact" render={() => <ContactPage title={this.state.contact.title} />} />
           

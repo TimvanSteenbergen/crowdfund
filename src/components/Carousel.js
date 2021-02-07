@@ -4,7 +4,7 @@ import Card from '../components/Card';
 
 import devgrub from '../assets/images/devgrub.png';
 import youtube from '../assets/images/youtube.png';
-import evverest from '../assets/images/evverest.png';
+import createcampaign from '../assets/images/createcampaign.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
@@ -24,18 +24,18 @@ class Carousel extends React.Component {
                 },
                 {
                     id: 1,
-                    title: 'Garrett Love',
+                    title: 'How does it work',
                     subTitle: 'YouTube channel',
                     imgSrc: youtube,
-                    link: 'https://www.youtube.com/channel/UCxSITxL2JbF229OGCqieVZw',
+                    link: '/campaignedit',
                     selected: false
                 },
                 {
                     id: 2,
-                    title: 'Evverest',
-                    subTitle: 'A social network for developers',
-                    imgSrc: evverest,
-                    link: 'https://github.com/garrettlove8/evverest',
+                    title: 'Create your campaign',
+                    subTitle: 'Start collecting funds.',
+                    imgSrc: createcampaign,
+                    link: '/campaignedit',
                     selected: false
                 },
             ]

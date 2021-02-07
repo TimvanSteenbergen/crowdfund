@@ -29,19 +29,7 @@ function App() {
     }
 
     async function createCampaign() {
-        console.log('1sdf');
-        if (!formData.name || !formData.description) return;
-        console.log('2sdf');
-        await API.graphql({ query: createCampaignMutation, variables: { input: formData } });
-        console.log('3sdf');
-        if (formData.CampaignImage) {
-            console.log('4sdf');
-            const image = await Storage.get(formData.CampaignImage);
-            formData.CampaignImage = image;
-            console.log('5sdf');
-        }
-        setCampaigns([...campaigns, formData]);
-        setFormData(initialFormState);
+
     }
 
     async function deleteCampaign({ id }) {
@@ -60,22 +48,10 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Add a campaign</h1>
-            <input
-                onChange={e => setFormData({ ...formData, 'name': e.target.value })}
-                placeholder="Campaign name"
-                value={formData.name}
-            />
-            <input
-                onChange={e => setFormData({ ...formData, 'description': e.target.value })}
-                placeholder="Campaign description"
-                value={formData.description}
-            />
-            <input
-                type="file"
-                onChange={onChange}
-            />
-            <button onClick={createCampaign}>Create Campaign</button>
+            <div>
+                <a className="nav-link" href="/campaignedit">Add a campaign</a>
+            </div>
+
             <div style={{ marginBottom: 30 }}>Hier mijn lijst van campaigns
                 {
                     campaigns.map(Campaign => (
