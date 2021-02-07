@@ -9,6 +9,9 @@ export const onCreateCampaign = /* GraphQL */ `
       description
       CampaignImage
       QRcodeImage
+      IsActive
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -22,6 +25,9 @@ export const onUpdateCampaign = /* GraphQL */ `
       description
       CampaignImage
       QRcodeImage
+      IsActive
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -35,6 +41,9 @@ export const onDeleteCampaign = /* GraphQL */ `
       description
       CampaignImage
       QRcodeImage
+      IsActive
+      StartDate
+      EndDate
       createdAt
       updatedAt
     }
@@ -47,6 +56,19 @@ export const onCreateDonation = /* GraphQL */ `
       name
       description
       image
+      ToCampaign {
+        id
+        name
+        description
+        CampaignImage
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
+      PaymentType
       createdAt
       updatedAt
     }
@@ -59,6 +81,19 @@ export const onUpdateDonation = /* GraphQL */ `
       name
       description
       image
+      ToCampaign {
+        id
+        name
+        description
+        CampaignImage
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
+      PaymentType
       createdAt
       updatedAt
     }
@@ -71,6 +106,19 @@ export const onDeleteDonation = /* GraphQL */ `
       name
       description
       image
+      ToCampaign {
+        id
+        name
+        description
+        CampaignImage
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
+      PaymentType
       createdAt
       updatedAt
     }

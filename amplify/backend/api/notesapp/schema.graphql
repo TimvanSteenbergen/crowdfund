@@ -4,10 +4,31 @@ type Campaign @model {
   description: String
   CampaignImage: String
   QRcodeImage: String
+  IsActive: Boolean
+  StartDate: AWSDateTime
+  EndDate: AWSDateTime
 }
 type Donation @model {
   id: ID!
   name: String!
   description: String
   image: String
+  ToCampaign: [Campaign]
+  PaymentType: PaymentType
+}
+enum PaymentType {
+  VISA,
+  BITCOIN,
+  BOGUS,
+  DANKORT,
+  DINERS_CLUB,
+  DISCOVER,
+  DOGECOIN,
+  FORBRUGSFORENINGEN,
+  JCB,
+  LITECOIN,
+  MAESTRO,
+  MASTERCARD,
+  PAYPAL,
+  AMERICAN_EXPRESS
 }
