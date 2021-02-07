@@ -1,54 +1,48 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo {
-    onCreateTodo {
+export const onCreateCampaign = /* GraphQL */ `
+  subscription OnCreateCampaign {
+    onCreateCampaign {
       id
       name
       description
+      CampaignImage
+      QRcodeImage
       createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo {
-    onUpdateTodo {
+export const onUpdateCampaign = /* GraphQL */ `
+  subscription OnUpdateCampaign {
+    onUpdateCampaign {
       id
       name
       description
+      CampaignImage
+      QRcodeImage
       createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo {
-    onDeleteTodo {
+export const onDeleteCampaign = /* GraphQL */ `
+  subscription OnDeleteCampaign {
+    onDeleteCampaign {
       id
       name
       description
+      CampaignImage
+      QRcodeImage
       createdAt
       updatedAt
     }
   }
 `;
-export const onCreateNote = /* GraphQL */ `
-  subscription OnCreateNote {
-    onCreateNote {
-      id
-      name
-      description
-      image
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateNote = /* GraphQL */ `
-  subscription OnUpdateNote {
-    onUpdateNote {
+export const onCreateDonation = /* GraphQL */ `
+  subscription OnCreateDonation {
+    onCreateDonation {
       id
       name
       description
@@ -58,9 +52,21 @@ export const onUpdateNote = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteNote = /* GraphQL */ `
-  subscription OnDeleteNote {
-    onDeleteNote {
+export const onUpdateDonation = /* GraphQL */ `
+  subscription OnUpdateDonation {
+    onUpdateDonation {
+      id
+      name
+      description
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDonation = /* GraphQL */ `
+  subscription OnDeleteDonation {
+    onDeleteDonation {
       id
       name
       description

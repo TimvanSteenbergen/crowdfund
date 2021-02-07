@@ -1,59 +1,61 @@
 import React, { useState, useEffect } from 'react';
-// import { API, Storage } from 'aws-amplify'; 
+import { API, Storage } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import { listCampaigns } from '../graphql/queries';
+import { createCampaign as createCampaignMutation, deleteCampaign as deleteCampaignMutation } from '../graphql/mutations';
 
 const initialFormState = { name: '', description: '' }
 
 function App() {
-    // const [campaigns, setCampaigns] = useState([]);
-    // const [formData, setFormData] = useState(initialFormState);
+    const [campaigns, setCampaigns] = useState([]);
+    const [formData, setFormData] = useState(initialFormState);
 
-    // useEffect(() => {
-    //     fetchCampaigns();
-    // }, []);
+    useEffect(() => {
+        fetchCampaigns();
+    }, []);
 
-    // async function fetchCampaigns() {
-    //     const apiData = await API.graphql({ query: listCampaigns });
-    //     const CampaignsFromAPI = apiData.data.listCampaigns.items;
-    //     await Promise.all(CampaignsFromAPI.map(async Campaign => {
-    //         if (Campaign.image) {
-    //             const image = await Storage.get(Campaign.image);
-    //             Campaign.image = image;
-    //         }
-    //         return Campaign;
-    //     }))
-    //     setCampaigns(apiData.data.listCampaigns.items);
-    // }
+    async function fetchCampaigns() {
+        const apiData = await API.graphql({ query: listCampaigns });
+        const CampaignsFromAPI = apiData.data.listCampaigns.items;
+        await Promise.all(CampaignsFromAPI.map(async Campaign => {
+            if (Campaign.image) {
+                const image = await Storage.get(Campaign.image);
+                Campaign.image = image;
+            }
+            return Campaign;
+        }))
+        setCampaigns(apiData.data.listCampaigns.items);
+    }
 
-    // async function createCampaign() {
-    //     if (!formData.name || !formData.description) return;
-    //     await API.graphql({ query: createCampaignMutation, variables: { input: formData } });
-    //     if (formData.image) {
-    //         const image = await Storage.get(formData.image);
-    //         formData.image = image;
-    //     }
-    //     setCampaigns([...Campaigns, formData]);
-    //     setFormData(initialFormState);
-    // }
+    async function createCampaign() {
+        if (!formData.name || !formData.description) return;
+        await API.graphql({ query: createCampaignMutation, variables: { input: formData } });
+        if (formData.image) {
+            const image = await Storage.get(formData.image);
+            formData.image = image;
+        }
+        setCampaigns([...campaigns, formData]);
+        setFormData(initialFormState);
+    }
 
-    // async function deleteCampaign({ id }) {
-    //     const newCampaignsArray = Campaigns.filter(Campaign => Campaign.id !== id);
-    //     setCampaigns(newCampaignsArray);
-    //     await API.graphql({ query: deleteCampaignMutation, variables: { input: { id } } });
-    // }
+    async function deleteCampaign({ id }) {
+        const newCampaignsArray = campaigns.filter(Campaign => Campaign.id !== id);
+        setCampaigns(newCampaignsArray);
+        await API.graphql({ query: deleteCampaignMutation, variables: { input: { id } } });
+    }
 
-    // async function onChange(e) {
-    //     if (!e.target.files[0]) return
-    //     const file = e.target.files[0];
-    //     setFormData({ ...formData, image: file.name });
-    //     await Storage.put(file.name, file);
-    //     fetchCampaigns();
-    // }
+    async function onChange(e) {
+        if (!e.target.files[0]) return
+        const file = e.target.files[0];
+        setFormData({ ...formData, image: file.name });
+        await Storage.put(file.name, file);
+        fetchCampaigns();
+    }
 
     return (
         <div className="App">
             <h1>My Campaigns App</h1>
-            {/* <input
+            <input
                 onChange={e => setFormData({ ...formData, 'name': e.target.value })}
                 placeholder="Campaign name"
                 value={formData.name}
@@ -67,10 +69,10 @@ function App() {
                 type="file"
                 onChange={onChange}
             />
-            <button onClick={createCampaign}>Create Campaign</button> */}
+            <button onClick={createCampaign}>Create Campaign</button>
             <div style={{ marginBottom: 30 }}>Hier mijn lijst van campaigns
-                {/* {
-                    Campaigns.map(Campaign => (
+                {
+                    campaigns.map(Campaign => (
                         <div key={Campaign.id || Campaign.name}>
                             <h2>{Campaign.name}</h2>
                             <p>{Campaign.description}</p>
@@ -80,7 +82,7 @@ function App() {
                             }
                         </div>
                     ))
-                } */}
+                }
             </div>
         </div>
     );

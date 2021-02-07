@@ -1,69 +1,60 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createCampaign = /* GraphQL */ `
+  mutation CreateCampaign(
+    $input: CreateCampaignInput!
+    $condition: ModelCampaignConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createCampaign(input: $input, condition: $condition) {
       id
       name
       description
+      CampaignImage
+      QRcodeImage
       createdAt
       updatedAt
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateCampaign = /* GraphQL */ `
+  mutation UpdateCampaign(
+    $input: UpdateCampaignInput!
+    $condition: ModelCampaignConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateCampaign(input: $input, condition: $condition) {
       id
       name
       description
+      CampaignImage
+      QRcodeImage
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteCampaign = /* GraphQL */ `
+  mutation DeleteCampaign(
+    $input: DeleteCampaignInput!
+    $condition: ModelCampaignConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteCampaign(input: $input, condition: $condition) {
       id
       name
       description
+      CampaignImage
+      QRcodeImage
       createdAt
       updatedAt
     }
   }
 `;
-export const createNote = /* GraphQL */ `
-  mutation CreateNote(
-    $input: CreateNoteInput!
-    $condition: ModelNoteConditionInput
+export const createDonation = /* GraphQL */ `
+  mutation CreateDonation(
+    $input: CreateDonationInput!
+    $condition: ModelDonationConditionInput
   ) {
-    createNote(input: $input, condition: $condition) {
-      id
-      name
-      description
-      image
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateNote = /* GraphQL */ `
-  mutation UpdateNote(
-    $input: UpdateNoteInput!
-    $condition: ModelNoteConditionInput
-  ) {
-    updateNote(input: $input, condition: $condition) {
+    createDonation(input: $input, condition: $condition) {
       id
       name
       description
@@ -73,12 +64,27 @@ export const updateNote = /* GraphQL */ `
     }
   }
 `;
-export const deleteNote = /* GraphQL */ `
-  mutation DeleteNote(
-    $input: DeleteNoteInput!
-    $condition: ModelNoteConditionInput
+export const updateDonation = /* GraphQL */ `
+  mutation UpdateDonation(
+    $input: UpdateDonationInput!
+    $condition: ModelDonationConditionInput
   ) {
-    deleteNote(input: $input, condition: $condition) {
+    updateDonation(input: $input, condition: $condition) {
+      id
+      name
+      description
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteDonation = /* GraphQL */ `
+  mutation DeleteDonation(
+    $input: DeleteDonationInput!
+    $condition: ModelDonationConditionInput
+  ) {
+    deleteDonation(input: $input, condition: $condition) {
       id
       name
       description

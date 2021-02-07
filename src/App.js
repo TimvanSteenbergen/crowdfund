@@ -14,7 +14,7 @@ import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } fr
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import CampaignsPage from './pages/CampaignsPage';
-import AboutPage from './pages/AboutPage';
+import DonationsPage from './pages/DonationsPage';
 import ContactPage from './pages/ContactPage';
 
 
@@ -27,7 +27,7 @@ class App extends React.Component {
       headerLinks: [
         { title: 'Home', path: '/' },
         { title: 'Campaigns', path: '/campaigns' },
-        { title: 'About', path: '/about' },
+        { title: 'Donations', path: '/donations' },
         { title: 'Contact', path: '/contact' }
       ],
       home: {
@@ -39,9 +39,9 @@ class App extends React.Component {
         title: 'Campaings',
         subTitle: 'Fundraisers for your idea'
       },
-      about: {
-        title: 'About Me',
-        subTitle: 'No, no. It is all about you.'
+      donations: {
+        title: 'Donation Me',
+        subTitle: 'No, no. It is all donation you.'
       },
       contact: {
         title: 'Contact',
@@ -63,7 +63,7 @@ class App extends React.Component {
               <Nav className="ml-auto">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/campaigns">Campaigns</Link>
-                <Link className="nav-link" to="/about">About</Link>
+                <Link className="nav-link" to="/donations">Donations</Link>
                 <Link className="nav-link" to="/contact">Contact</Link>
                 <AmplifySignOut />
               </Nav>
@@ -72,7 +72,7 @@ class App extends React.Component {
 
           <Route path="/" exact render={() => <HomePage title={this.state.home.title} subTitle={this.state.home.subTitle} text={this.state.home.text} />} />
           <Route path="/campaigns" render={() => <CampaignsPage title={this.state.campaigns.title} />} />
-          <Route path="/about" render={() => <AboutPage title={this.state.about.title} />} />
+          <Route path="/donations" render={() => <DonationsPage title={this.state.donations.title} />} />
           <Route path="/contact" render={() => <ContactPage title={this.state.contact.title} />} />
           
           <Footer />

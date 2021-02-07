@@ -1,7 +1,9 @@
-type Todo @model {
+type Campaign @model {
   id: ID!
   name: String!
   description: String
+  CampaignImage: String
+  QRcodeImage: String
 }
 type Donation @model {
   id: ID!
