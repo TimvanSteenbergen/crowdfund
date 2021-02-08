@@ -41,17 +41,17 @@ function App() {
                 value={formData.description}
             />
             <input
-                onChange={e => setFormData({ ...formData, 'name': e.target.value })}
+                onChange={e => setFormData({ ...formData, 'FundraiserName': e.target.value })}
                 placeholder="Fundraiser name"
                 value={formData.FundraiserName}
             />
             <input
-                onChange={e => setFormData({ ...formData, 'description': e.target.value })}
+                onChange={e => setFormData({ ...formData, 'FundraiserText': e.target.value })}
                 placeholder="Fundraiser text"
                 value={formData.FundraiserText}
             />
             <input
-                onChange={e => setFormData({ ...formData, 'name': e.target.value })}
+                onChange={e => setFormData({ ...formData, 'FundraiserSocialnumber': e.target.value })}
                 placeholder="Fundraiser socialnumber"
                 value={formData.FundraiserSocialnumber}
             />
