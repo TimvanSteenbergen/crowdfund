@@ -23,5 +23,9 @@ Learn more about @auth here: https://docs.amplify.aws/cli/graphql-transformer/au
 
 Todos:
 - add authentication and make sure every Crowdfundraiser can modify her own crowdfundraiser.
+- style it 
+- Donations: the best way is donors doing one payment where 99% is paid to the fundraiser bankaccount and 1 % to the crowdfund bankaccount
+- have a landing page per campaign
 - find a way to make each donation get split automatically between the fundraiser and 2% to crowdfund.
-- Create a seperate CreateCampaignPage
+- Done. Create a seperate CreateCampaignPage. 
+

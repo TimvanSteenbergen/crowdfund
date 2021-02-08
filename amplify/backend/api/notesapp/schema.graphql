@@ -3,6 +3,10 @@ type Campaign @model {
   name: String!
   description: String
   CampaignImage: String
+  FundraiserImage: String
+  FundraiserName: String
+  FundraiserText: String
+  FundraiserSocialnumber: String
   QRcodeImage: String
   IsActive: Boolean
   StartDate: AWSDateTime
@@ -11,9 +15,10 @@ type Campaign @model {
 type Donation @model {
   id: ID!
   name: String!
+  FundraiserName: String!
+  ToCampaign: [Campaign]!
   description: String
   image: String
-  ToCampaign: [Campaign]
   PaymentType: PaymentType
 }
 enum PaymentType {

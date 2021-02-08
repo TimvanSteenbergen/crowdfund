@@ -8,6 +8,10 @@ export const getCampaign = /* GraphQL */ `
       name
       description
       CampaignImage
+      FundraiserImage
+      FundraiserName
+      FundraiserText
+      FundraiserSocialnumber
       QRcodeImage
       IsActive
       StartDate
@@ -29,6 +33,10 @@ export const listCampaigns = /* GraphQL */ `
         name
         description
         CampaignImage
+        FundraiserImage
+        FundraiserName
+        FundraiserText
+        FundraiserSocialnumber
         QRcodeImage
         IsActive
         StartDate
@@ -45,13 +53,16 @@ export const getDonation = /* GraphQL */ `
     getDonation(id: $id) {
       id
       name
-      description
-      image
+      FundraiserName
       ToCampaign {
         id
         name
         description
         CampaignImage
+        FundraiserImage
+        FundraiserName
+        FundraiserText
+        FundraiserSocialnumber
         QRcodeImage
         IsActive
         StartDate
@@ -59,6 +70,8 @@ export const getDonation = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      description
+      image
       PaymentType
       createdAt
       updatedAt
@@ -75,13 +88,16 @@ export const listDonations = /* GraphQL */ `
       items {
         id
         name
-        description
-        image
+        FundraiserName
         ToCampaign {
           id
           name
           description
           CampaignImage
+          FundraiserImage
+          FundraiserName
+          FundraiserText
+          FundraiserSocialnumber
           QRcodeImage
           IsActive
           StartDate
@@ -89,6 +105,8 @@ export const listDonations = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        description
+        image
         PaymentType
         createdAt
         updatedAt

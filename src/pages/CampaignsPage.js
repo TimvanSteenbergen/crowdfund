@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API, Storage } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { listCampaigns } from '../graphql/queries';
-import { createCampaign as createCampaignMutation, deleteCampaign as deleteCampaignMutation } from '../graphql/mutations';
-import { boolean } from 'yargs';
+import { deleteCampaign as deleteCampaignMutation } from '../graphql/mutations';
 
 const initialFormState = { name: '', description: '' }
 
@@ -28,22 +27,10 @@ function App() {
         setCampaigns(apiData.data.listCampaigns.items);
     }
 
-    async function createCampaign() {
-
-    }
-
     async function deleteCampaign({ id }) {
         const newCampaignsArray = campaigns.filter(Campaign => Campaign.id !== id);
         setCampaigns(newCampaignsArray);
         await API.graphql({ query: deleteCampaignMutation, variables: { input: { id } } });
-    }
-
-    async function onChange(e) {
-        if (!e.target.files[0]) return
-        const file = e.target.files[0];
-        setFormData({ ...formData, CampaignImage: file.name });
-        await Storage.put(file.name, file);
-        fetchCampaigns();
     }
 
     return (
@@ -58,6 +45,9 @@ function App() {
                         <div key={Campaign.id || Campaign.name}>
                             <h2>{Campaign.name}</h2>
                             <p>{Campaign.description}</p>
+                            <p>{Campaign.FundraiserName}</p>
+                            <p>{Campaign.FundraiserText}</p>
+                            <p>{Campaign.FundraiserSocialnumber}</p>
                             <button onClick={() => deleteCampaign(Campaign)}>Delete Campaign</button>
                             {
                                 Campaign.CampaignImage && <img src={Campaign.CampaignImage} style={{ width: 400 }} alt='' />
