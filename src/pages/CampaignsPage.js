@@ -39,7 +39,7 @@ function App() {
                 <a className="nav-link" href="/campaignedit">Add a campaign</a>
             </div>
 
-            <div style={{ marginBottom: 30 }}>Hier mijn lijst van campaigns
+            <div style={{ marginBottom: 30 }}>The list of my campaigns
                 {
                     campaigns.map(Campaign => (
                         <div key={Campaign.id || Campaign.name}>

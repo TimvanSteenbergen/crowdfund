@@ -3,7 +3,7 @@ Code for the project we made in the video searies on youtube
 
 [Watch Series Here](https://www.youtube.com/playlist?list=PLnpdZyv-BjINbUjmTUsyziHz_4fa9hM5G)
 
-Changing the apges:
+Changing the pages:
 - the menu is in src\App.js
 - the pages are in src\pages
 
