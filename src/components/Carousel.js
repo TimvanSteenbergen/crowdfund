@@ -24,17 +24,17 @@ class Carousel extends React.Component {
                 },
                 {
                     id: 1,
-                    title: 'How does it work',
-                    subTitle: 'YouTube channel',
-                    imgSrc: youtube,
+                    title: 'Create your campaign',
+                    subTitle: 'Start collecting funds.',
+                    imgSrc: createcampaign,
                     link: '/campaignedit',
                     selected: false
                 },
                 {
                     id: 2,
-                    title: 'Create your campaign',
-                    subTitle: 'Start collecting funds.',
-                    imgSrc: createcampaign,
+                    title: 'How does it work',
+                    subTitle: 'YouTube channel',
+                    imgSrc: youtube,
                     link: '/campaignedit',
                     selected: false
                 },
@@ -43,7 +43,7 @@ class Carousel extends React.Component {
     }
 
 
-    handleCardClick = (id, card) => {
+    handleOnMouseOver = (id, card) => {
 
         let items = [...this.state.items];
 
@@ -60,10 +60,17 @@ class Carousel extends React.Component {
         });
     }
 
+    handleOnClick = (cardlink) => {
+        window.location = cardlink;
+    }
+
 
     makeItems = (items) => {
         return items.map(item => {
-            return <Card item={item} click={(e => this.handleCardClick(item.id, e))} key={item.id} />
+            return <Card item={item} 
+            onclick={(e => this.handleOnClick(item.link))} 
+            onmouseover={(e => this.handleOnMouseOver(item.id, e))} 
+            key={item.id} />
         })
     }
 
