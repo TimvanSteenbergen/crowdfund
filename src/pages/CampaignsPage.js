@@ -4,11 +4,8 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import { listCampaigns } from '../graphql/queries';
 import { deleteCampaign as deleteCampaignMutation } from '../graphql/mutations';
 
-const initialFormState = { name: '', description: '' }
-
 function App() {
     const [campaigns, setCampaigns] = useState([]);
-    const [formData, setFormData] = useState(initialFormState);
 
     useEffect(() => {
         fetchCampaigns();

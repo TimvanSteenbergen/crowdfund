@@ -15,8 +15,6 @@ type Campaign @model {
 type Donation @model {
   id: ID!
   name: String!
-  FundraiserName: String!
-  ToCampaign: [Campaign]!
   description: String
   image: String
   PaymentType: PaymentType

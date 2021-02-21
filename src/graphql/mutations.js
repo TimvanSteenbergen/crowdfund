@@ -78,23 +78,6 @@ export const createDonation = /* GraphQL */ `
     createDonation(input: $input, condition: $condition) {
       id
       name
-      FundraiserName
-      ToCampaign {
-        id
-        name
-        description
-        CampaignImage
-        FundraiserImage
-        FundraiserName
-        FundraiserText
-        FundraiserSocialnumber
-        QRcodeImage
-        IsActive
-        StartDate
-        EndDate
-        createdAt
-        updatedAt
-      }
       description
       image
       PaymentType
@@ -111,23 +94,6 @@ export const updateDonation = /* GraphQL */ `
     updateDonation(input: $input, condition: $condition) {
       id
       name
-      FundraiserName
-      ToCampaign {
-        id
-        name
-        description
-        CampaignImage
-        FundraiserImage
-        FundraiserName
-        FundraiserText
-        FundraiserSocialnumber
-        QRcodeImage
-        IsActive
-        StartDate
-        EndDate
-        createdAt
-        updatedAt
-      }
       description
       image
       PaymentType
@@ -144,23 +110,6 @@ export const deleteDonation = /* GraphQL */ `
     deleteDonation(input: $input, condition: $condition) {
       id
       name
-      FundraiserName
-      ToCampaign {
-        id
-        name
-        description
-        CampaignImage
-        FundraiserImage
-        FundraiserName
-        FundraiserText
-        FundraiserSocialnumber
-        QRcodeImage
-        IsActive
-        StartDate
-        EndDate
-        createdAt
-        updatedAt
-      }
       description
       image
       PaymentType

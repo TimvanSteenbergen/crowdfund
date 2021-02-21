@@ -17,13 +17,13 @@ function App() {
 
     async function fetchDonations() {
         const apiData = await API.graphql({ query: listDonations });
-        const donationsFromAPI = apiData.data.listDonations.items;
-        await Promise.all(donationsFromAPI.map(async donation => {
-            if (donation.image) {
-                const image = await Storage.get(donation.image);
-                donation.image = image;
-            }
-            return donation;
+        const DonationsFromAPI = apiData.data.listDonations.items;
+        await Promise.all(DonationsFromAPI.map(async Donation => {
+            // if (Donation.image) {
+            //     const image = await Storage.get(Donation.image);
+            //     Donation.image = image;
+            // }
+            return Donation;
         }))
         setDonations(apiData.data.listDonations.items);
     }
@@ -34,6 +34,8 @@ function App() {
         if (formData.image) {
             const image = await Storage.get(formData.image);
             formData.image = image;
+        } else {
+            console.log('without image');
         }
         setDonations([...donations, formData]);
         setFormData(initialFormState);
@@ -86,7 +88,7 @@ function App() {
                 }
             </div>
         </div>
-    );
+    )
 }
 
 export default withAuthenticator(App);

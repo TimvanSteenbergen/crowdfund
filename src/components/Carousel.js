@@ -2,7 +2,7 @@ import React from 'react';
 
 import Card from '../components/Card';
 
-import devgrub from '../assets/images/devgrub.png';
+import donations from '../assets/images/donations.png';
 import youtube from '../assets/images/youtube.png';
 import createcampaign from '../assets/images/createcampaign.png';
 import Container from 'react-bootstrap/Container';
@@ -16,10 +16,10 @@ class Carousel extends React.Component {
             items: [
                 {
                     id: 0,
-                    title: 'Dev Grub',
-                    subTitle: 'The cookbook for developers',
-                    imgSrc: devgrub,
-                    link: 'https://devgrub.com',
+                    title: 'Donations',
+                    subTitle: 'See the latest donations',
+                    imgSrc: donations,
+                    link: '/donations',
                     selected: false
                 },
                 {
