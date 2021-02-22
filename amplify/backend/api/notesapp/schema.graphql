@@ -1,37 +1,328 @@
-type Campaign @model {
-  id: ID!
-  name: String!
-  description: String
-  CampaignImage: String
-  FundraiserImage: String
-  FundraiserName: String
-  FundraiserText: String
-  FundraiserSocialnumber: String
-  QRcodeImage: String
-  IsActive: Boolean
-  StartDate: AWSDateTime
-  EndDate: AWSDateTime
+type Campaign {
+	id: ID!
+	name: String!
+	description: String
+	CampaignImage: String
+	FundraiserImage: String
+	FundraiserName: String
+	FundraiserText: String
+	FundraiserSocialnumber: String
+	QRcodeImage: String
+	IsActive: Boolean
+	StartDate: AWSDateTime
+	EndDate: AWSDateTime
+	Donations(
+		filter: ModelDonationFilterInput,
+		sortDirection: ModelSortDirection,
+		limit: Int,
+		nextToken: String
+	): ModelDonationConnection
+	_version: Int!
+	_deleted: Boolean
+	_lastChangedAt: AWSTimestamp!
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
 }
-type Donation @model {
-  id: ID!
-  name: String!
-  description: String
-  image: String
-  PaymentType: PaymentType
+
+input CreateCampaignInput {
+	id: ID
+	name: String!
+	description: String
+	CampaignImage: String
+	FundraiserImage: String
+	FundraiserName: String
+	FundraiserText: String
+	FundraiserSocialnumber: String
+	QRcodeImage: String
+	IsActive: Boolean
+	StartDate: AWSDateTime
+	EndDate: AWSDateTime
+	_version: Int
 }
+
+input CreateDonationInput {
+	id: ID
+	name: String!
+	description: String
+	image: String
+	PaymentType: PaymentType
+	campaignID: ID!
+	_version: Int
+}
+
+input DeleteCampaignInput {
+	id: ID
+	_version: Int
+}
+
+input DeleteDonationInput {
+	id: ID
+	_version: Int
+}
+
+type Donation {
+	id: ID!
+	name: String!
+	description: String
+	image: String
+	PaymentType: PaymentType
+	campaignID: ID!
+	_version: Int!
+	_deleted: Boolean
+	_lastChangedAt: AWSTimestamp!
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+}
+
+enum ModelAttributeTypes {
+	binary
+	binarySet
+	bool
+	list
+	map
+	number
+	numberSet
+	string
+	stringSet
+	_null
+}
+
+input ModelBooleanInput {
+	ne: Boolean
+	eq: Boolean
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+}
+
+input ModelCampaignConditionInput {
+	name: ModelStringInput
+	description: ModelStringInput
+	CampaignImage: ModelStringInput
+	FundraiserImage: ModelStringInput
+	FundraiserName: ModelStringInput
+	FundraiserText: ModelStringInput
+	FundraiserSocialnumber: ModelStringInput
+	QRcodeImage: ModelStringInput
+	IsActive: ModelBooleanInput
+	StartDate: ModelStringInput
+	EndDate: ModelStringInput
+	and: [ModelCampaignConditionInput]
+	or: [ModelCampaignConditionInput]
+	not: ModelCampaignConditionInput
+}
+
+type ModelCampaignConnection {
+	items: [Campaign]
+	nextToken: String
+	startedAt: AWSTimestamp
+}
+
+input ModelCampaignFilterInput {
+	id: ModelIDInput
+	name: ModelStringInput
+	description: ModelStringInput
+	CampaignImage: ModelStringInput
+	FundraiserImage: ModelStringInput
+	FundraiserName: ModelStringInput
+	FundraiserText: ModelStringInput
+	FundraiserSocialnumber: ModelStringInput
+	QRcodeImage: ModelStringInput
+	IsActive: ModelBooleanInput
+	StartDate: ModelStringInput
+	EndDate: ModelStringInput
+	and: [ModelCampaignFilterInput]
+	or: [ModelCampaignFilterInput]
+	not: ModelCampaignFilterInput
+}
+
+input ModelDonationConditionInput {
+	name: ModelStringInput
+	description: ModelStringInput
+	image: ModelStringInput
+	PaymentType: ModelPaymentTypeInput
+	campaignID: ModelIDInput
+	and: [ModelDonationConditionInput]
+	or: [ModelDonationConditionInput]
+	not: ModelDonationConditionInput
+}
+
+type ModelDonationConnection {
+	items: [Donation]
+	nextToken: String
+	startedAt: AWSTimestamp
+}
+
+input ModelDonationFilterInput {
+	id: ModelIDInput
+	name: ModelStringInput
+	description: ModelStringInput
+	image: ModelStringInput
+	PaymentType: ModelPaymentTypeInput
+	campaignID: ModelIDInput
+	and: [ModelDonationFilterInput]
+	or: [ModelDonationFilterInput]
+	not: ModelDonationFilterInput
+}
+
+input ModelFloatInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	between: [Float]
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+	size: ModelSizeInput
+}
+
+input ModelIntInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: [Int]
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+}
+
+input ModelPaymentTypeInput {
+	eq: PaymentType
+	ne: PaymentType
+}
+
+input ModelSizeInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: [Int]
+}
+
+enum ModelSortDirection {
+	ASC
+	DESC
+}
+
+input ModelStringInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+	attributeExists: Boolean
+	attributeType: ModelAttributeTypes
+	size: ModelSizeInput
+}
+
+type Mutation {
+	createCampaign(input: CreateCampaignInput!, condition: ModelCampaignConditionInput): Campaign
+	updateCampaign(input: UpdateCampaignInput!, condition: ModelCampaignConditionInput): Campaign
+	deleteCampaign(input: DeleteCampaignInput!, condition: ModelCampaignConditionInput): Campaign
+	createDonation(input: CreateDonationInput!, condition: ModelDonationConditionInput): Donation
+	updateDonation(input: UpdateDonationInput!, condition: ModelDonationConditionInput): Donation
+	deleteDonation(input: DeleteDonationInput!, condition: ModelDonationConditionInput): Donation
+}
+
 enum PaymentType {
-  VISA,
-  BITCOIN,
-  BOGUS,
-  DANKORT,
-  DINERS_CLUB,
-  DISCOVER,
-  DOGECOIN,
-  FORBRUGSFORENINGEN,
-  JCB,
-  LITECOIN,
-  MAESTRO,
-  MASTERCARD,
-  PAYPAL,
-  AMERICAN_EXPRESS
+	VISA
+	BITCOIN
+	BOGUS
+	DANKORT
+	DINERS_CLUB
+	DISCOVER
+	DOGECOIN
+	FORBRUGSFORENINGEN
+	JCB
+	LITECOIN
+	MAESTRO
+	MASTERCARD
+	PAYPAL
+	AMERICAN_EXPRESS
+	BUNQ
+}
+
+type Query {
+	syncCampaigns(
+		filter: ModelCampaignFilterInput,
+		limit: Int,
+		nextToken: String,
+		lastSync: AWSTimestamp
+	): ModelCampaignConnection
+	getCampaign(id: ID!): Campaign
+	listCampaigns(filter: ModelCampaignFilterInput, limit: Int, nextToken: String): ModelCampaignConnection
+	syncDonations(
+		filter: ModelDonationFilterInput,
+		limit: Int,
+		nextToken: String,
+		lastSync: AWSTimestamp
+	): ModelDonationConnection
+	getDonation(id: ID!): Donation
+	listDonations(filter: ModelDonationFilterInput, limit: Int, nextToken: String): ModelDonationConnection
+}
+
+type Subscription {
+	onCreateCampaign: Campaign
+		@aws_subscribe(mutations: ["createCampaign"])
+	onUpdateCampaign: Campaign
+		@aws_subscribe(mutations: ["updateCampaign"])
+	onDeleteCampaign: Campaign
+		@aws_subscribe(mutations: ["deleteCampaign"])
+	onCreateDonation: Donation
+		@aws_subscribe(mutations: ["createDonation"])
+	onUpdateDonation: Donation
+		@aws_subscribe(mutations: ["updateDonation"])
+	onDeleteDonation: Donation
+		@aws_subscribe(mutations: ["deleteDonation"])
+}
+
+input UpdateCampaignInput {
+	id: ID!
+	name: String
+	description: String
+	CampaignImage: String
+	FundraiserImage: String
+	FundraiserName: String
+	FundraiserText: String
+	FundraiserSocialnumber: String
+	QRcodeImage: String
+	IsActive: Boolean
+	StartDate: AWSDateTime
+	EndDate: AWSDateTime
+	_version: Int
+}
+
+input UpdateDonationInput {
+	id: ID!
+	name: String
+	description: String
+	image: String
+	PaymentType: PaymentType
+	campaignID: ID
+	_version: Int
 }

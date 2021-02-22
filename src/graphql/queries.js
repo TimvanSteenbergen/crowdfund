@@ -53,6 +53,22 @@ export const getDonation = /* GraphQL */ `
     getDonation(id: $id) {
       id
       name
+      campaign {
+        id
+        name
+        description
+        CampaignImage
+        FundraiserImage
+        FundraiserName
+        FundraiserText
+        FundraiserSocialnumber
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
       description
       image
       PaymentType
@@ -71,6 +87,22 @@ export const listDonations = /* GraphQL */ `
       items {
         id
         name
+        campaign {
+          id
+          name
+          description
+          CampaignImage
+          FundraiserImage
+          FundraiserName
+          FundraiserText
+          FundraiserSocialnumber
+          QRcodeImage
+          IsActive
+          StartDate
+          EndDate
+          createdAt
+          updatedAt
+        }
         description
         image
         PaymentType

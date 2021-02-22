@@ -66,6 +66,22 @@ export const onCreateDonation = /* GraphQL */ `
     onCreateDonation {
       id
       name
+      campaign {
+        id
+        name
+        description
+        CampaignImage
+        FundraiserImage
+        FundraiserName
+        FundraiserText
+        FundraiserSocialnumber
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
       description
       image
       PaymentType
@@ -79,6 +95,22 @@ export const onUpdateDonation = /* GraphQL */ `
     onUpdateDonation {
       id
       name
+      campaign {
+        id
+        name
+        description
+        CampaignImage
+        FundraiserImage
+        FundraiserName
+        FundraiserText
+        FundraiserSocialnumber
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
       description
       image
       PaymentType
@@ -92,6 +124,22 @@ export const onDeleteDonation = /* GraphQL */ `
     onDeleteDonation {
       id
       name
+      campaign {
+        id
+        name
+        description
+        CampaignImage
+        FundraiserImage
+        FundraiserName
+        FundraiserText
+        FundraiserSocialnumber
+        QRcodeImage
+        IsActive
+        StartDate
+        EndDate
+        createdAt
+        updatedAt
+      }
       description
       image
       PaymentType
