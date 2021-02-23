@@ -1,5 +1,79 @@
 export const schema = {
-    "models": {
+    "models": {},
+    "enums": {
+        "ModelAttributeTypes": {
+            "name": "ModelAttributeTypes",
+            "values": [
+                "binary",
+                "binarySet",
+                "bool",
+                "list",
+                "map",
+                "number",
+                "numberSet",
+                "string",
+                "stringSet",
+                "_null"
+            ]
+        },
+        "PaymentType": {
+            "name": "PaymentType",
+            "values": [
+                "VISA",
+                "BITCOIN",
+                "BOGUS",
+                "DANKORT",
+                "DINERS_CLUB",
+                "DISCOVER",
+                "DOGECOIN",
+                "FORBRUGSFORENINGEN",
+                "JCB",
+                "LITECOIN",
+                "MAESTRO",
+                "MASTERCARD",
+                "PAYPAL",
+                "AMERICAN_EXPRESS",
+                "BUNQ"
+            ]
+        },
+        "ModelSortDirection": {
+            "name": "ModelSortDirection",
+            "values": [
+                "ASC",
+                "DESC"
+            ]
+        }
+    },
+    "nonModels": {
+        "ModelCampaignConnection": {
+            "name": "ModelCampaignConnection",
+            "fields": {
+                "items": {
+                    "name": "items",
+                    "isArray": true,
+                    "type": {
+                        "nonModel": "Campaign"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true
+                },
+                "nextToken": {
+                    "name": "nextToken",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "startedAt": {
+                    "name": "startedAt",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            }
+        },
         "Campaign": {
             "name": "Campaign",
             "fields": {
@@ -89,51 +163,78 @@ export const schema = {
                 },
                 "Donations": {
                     "name": "Donations",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "ModelDonationConnection"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "_version": {
+                    "name": "_version",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "_deleted": {
+                    "name": "_deleted",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "_lastChangedAt": {
+                    "name": "_lastChangedAt",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
+        },
+        "ModelDonationConnection": {
+            "name": "ModelDonationConnection",
+            "fields": {
+                "items": {
+                    "name": "items",
                     "isArray": true,
                     "type": {
-                        "model": "Donation"
+                        "nonModel": "Donation"
                     },
                     "isRequired": false,
                     "attributes": [],
-                    "isArrayNullable": true,
-                    "association": {
-                        "connectionType": "HAS_MANY",
-                        "associatedWith": "campaignID"
-                    }
-                }
-            },
-            "syncable": true,
-            "pluralName": "Campaigns",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
+                    "isArrayNullable": true
                 },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "private",
-                                "operations": [
-                                    "read",
-                                    "create",
-                                    "update",
-                                    "delete"
-                                ],
-                                "provider": "iam"
-                            },
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "read"
-                                ],
-                                "provider": "iam"
-                            }
-                        ]
-                    }
+                "nextToken": {
+                    "name": "nextToken",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "startedAt": {
+                    "name": "startedAt",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": false,
+                    "attributes": []
                 }
-            ]
+            }
         },
         "Donation": {
             "name": "Donation",
@@ -181,72 +282,44 @@ export const schema = {
                     "type": "ID",
                     "isRequired": true,
                     "attributes": []
-                }
-            },
-            "syncable": true,
-            "pluralName": "Donations",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
                 },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byCampaign",
-                        "fields": [
-                            "campaignID"
-                        ]
-                    }
+                "_version": {
+                    "name": "_version",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
                 },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
-                            {
-                                "allow": "public",
-                                "operations": [
-                                    "create",
-                                    "read"
-                                ],
-                                "provider": "iam"
-                            },
-                            {
-                                "allow": "private",
-                                "operations": [
-                                    "read",
-                                    "create"
-                                ],
-                                "provider": "iam"
-                            }
-                        ]
-                    }
+                "_deleted": {
+                    "name": "_deleted",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "_lastChangedAt": {
+                    "name": "_lastChangedAt",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": true,
+                    "attributes": []
                 }
-            ]
+            }
         }
     },
-    "enums": {
-        "PaymentType": {
-            "name": "PaymentType",
-            "values": [
-                "VISA",
-                "BITCOIN",
-                "BOGUS",
-                "DANKORT",
-                "DINERS_CLUB",
-                "DISCOVER",
-                "DOGECOIN",
-                "FORBRUGSFORENINGEN",
-                "JCB",
-                "LITECOIN",
-                "MAESTRO",
-                "MASTERCARD",
-                "PAYPAL",
-                "AMERICAN_EXPRESS",
-                "BUNQ"
-            ]
-        }
-    },
-    "nonModels": {},
-    "version": "7406e535cbca3c3789943868aacdc1ca"
+    "version": "f5ca5a2586b9eb8a9b4c9af4a0150448"
 };

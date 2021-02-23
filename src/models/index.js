@@ -2,6 +2,19 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
+const ModelAttributeTypes = {
+  "BINARY": "binary",
+  "BINARY_SET": "binarySet",
+  "BOOL": "bool",
+  "LIST": "list",
+  "MAP": "map",
+  "NUMBER": "number",
+  "NUMBER_SET": "numberSet",
+  "STRING": "string",
+  "STRING_SET": "stringSet",
+  "NULL": "_null"
+};
+
 const PaymentType = {
   "VISA": "VISA",
   "BITCOIN": "BITCOIN",
@@ -20,10 +33,19 @@ const PaymentType = {
   "BUNQ": "BUNQ"
 };
 
-const { Campaign, Donation } = initSchema(schema);
+const ModelSortDirection = {
+  "ASC": "ASC",
+  "DESC": "DESC"
+};
+
+const { ModelCampaignConnection, Campaign, ModelDonationConnection, Donation } = initSchema(schema);
 
 export {
+  ModelAttributeTypes,
+  PaymentType,
+  ModelSortDirection,
+  ModelCampaignConnection,
   Campaign,
-  Donation,
-  PaymentType
+  ModelDonationConnection,
+  Donation
 };
