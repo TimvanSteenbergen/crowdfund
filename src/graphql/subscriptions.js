@@ -16,26 +16,6 @@ export const onCreateCampaign = /* GraphQL */ `
       IsActive
       StartDate
       EndDate
-      Donations {
-        items {
-          id
-          name
-          description
-          image
-          PaymentType
-          campaignID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -56,26 +36,6 @@ export const onUpdateCampaign = /* GraphQL */ `
       IsActive
       StartDate
       EndDate
-      Donations {
-        items {
-          id
-          name
-          description
-          image
-          PaymentType
-          campaignID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -96,26 +56,6 @@ export const onDeleteCampaign = /* GraphQL */ `
       IsActive
       StartDate
       EndDate
-      Donations {
-        items {
-          id
-          name
-          description
-          image
-          PaymentType
-          campaignID
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -129,10 +69,6 @@ export const onCreateDonation = /* GraphQL */ `
       description
       image
       PaymentType
-      campaignID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -146,10 +82,6 @@ export const onUpdateDonation = /* GraphQL */ `
       description
       image
       PaymentType
-      campaignID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -163,10 +95,6 @@ export const onDeleteDonation = /* GraphQL */ `
       description
       image
       PaymentType
-      campaignID
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }

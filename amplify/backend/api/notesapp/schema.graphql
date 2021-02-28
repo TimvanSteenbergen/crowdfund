@@ -1,57 +1,37 @@
-type Campaign {
-	id: ID!
-	name: String!
-	description: String
-	CampaignImage: String
-	FundraiserImage: String
-	FundraiserName: String
-	FundraiserText: String
-	FundraiserSocialnumber: String
-	QRcodeImage: String
-	IsActive: Boolean
-	StartDate: AWSDateTime
-	EndDate: AWSDateTime
-	Donations(
-		filter: ModelDonationFilterInput,
-		sortDirection: ModelSortDirection,
-		limit: Int,
-		nextToken: String
-	): ModelDonationConnection
-	_version: Int!
-	_deleted: Boolean
-	_lastChangedAt: AWSTimestamp!
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime!
+type Campaign @model {
+  id: ID!
+  name: String!
+  description: String
+  CampaignImage: String
+  FundraiserImage: String
+  FundraiserName: String
+  FundraiserText: String
+  FundraiserSocialnumber: String
+  QRcodeImage: String
+  IsActive: Boolean
+  StartDate: AWSDateTime
+  EndDate: AWSDateTime
 }
-
-type Donation {
-	id: ID!
-	name: String!
-	description: String
-	image: String
-	PaymentType: PaymentType
-	campaignID: ID!
-	_version: Int!
-	_deleted: Boolean
-	_lastChangedAt: AWSTimestamp!
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime!
+type Donation @model {
+  id: ID!
+  name: String!
+  description: String
+  image: String
+  PaymentType: PaymentType
 }
-
 enum PaymentType {
-	VISA
-	BITCOIN
-	BOGUS
-	DANKORT
-	DINERS_CLUB
-	DISCOVER
-	DOGECOIN
-	FORBRUGSFORENINGEN
-	JCB
-	LITECOIN
-	MAESTRO
-	MASTERCARD
-	PAYPAL
-	AMERICAN_EXPRESS
-	BUNQ
+  VISA,
+  BITCOIN,
+  BOGUS,
+  DANKORT,
+  DINERS_CLUB,
+  DISCOVER,
+  DOGECOIN,
+  FORBRUGSFORENINGEN,
+  JCB,
+  LITECOIN,
+  MAESTRO,
+  MASTERCARD,
+  PAYPAL,
+  AMERICAN_EXPRESS
 }
