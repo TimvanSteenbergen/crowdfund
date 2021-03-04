@@ -12,6 +12,7 @@ type Campaign @model {
   StartDate: AWSDateTime
   EndDate: AWSDateTime
 }
+
 type Donation @model {
   id: ID!
   name: String!
@@ -19,6 +20,7 @@ type Donation @model {
   image: String
   PaymentType: PaymentType
 }
+
 enum PaymentType {
   VISA,
   BITCOIN,

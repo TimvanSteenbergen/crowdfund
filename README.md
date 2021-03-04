@@ -1,7 +1,8 @@
 # Building a Portfolio Website with React
-Code for the project we made in the video searies on youtube
+Code for the project we made in the video series on youtube
 
 [Watch Series Here](https://www.youtube.com/playlist?list=PLnpdZyv-BjINbUjmTUsyziHz_4fa9hM5G)
+[and training from Brett McLaughlin](https://www.linkedin.com/learning/build-a-react-application-using-aws-amplify)
 
 Changing the pages:
 - the menu is in src\App.js

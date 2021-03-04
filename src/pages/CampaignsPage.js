@@ -13,6 +13,7 @@ function App() {
 
     async function fetchCampaigns() {
         const apiData = await API.graphql({ query: listCampaigns });
+        console.log('Fetching the campaigns');
         const CampaignsFromAPI = apiData.data.listCampaigns.items;
         await Promise.all(CampaignsFromAPI.map(async Campaign => {
             if (Campaign.CampaignImage) {
@@ -57,4 +58,4 @@ function App() {
     );
 }
 
-export default withAuthenticator(App);
+export default App;
